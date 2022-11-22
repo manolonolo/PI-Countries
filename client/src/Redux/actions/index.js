@@ -5,3 +5,24 @@ export const getAllCountries= () => async(dispatch) => {
     .then((info) => dispatch({type: 'GET_ALL_COUNTRIES', payload: info.data}))
     .catch((error) => console.log(error));
 };
+
+export function filterByContinent(payload){
+    return{
+        type: 'FILTER_BY_CONTINENT',
+        payload
+    }
+}
+
+export function orderByName(payload){
+    return{
+        type: 'ORDER_BY_NAME',
+        payload
+    }
+}
+
+export function orderByPopulation(payload){
+    return{
+        type: 'ORDER_BY_POPULATION',
+        payload
+    }
+}
