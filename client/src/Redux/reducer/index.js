@@ -25,6 +25,12 @@ function rootReducer(state = initialState, action){
                 countries: country
             };
 
+        case 'GET_COUNTRY_ID':
+            return {
+                ...state,
+                countryId: action.payload
+            };
+
         case 'GET_ACTIVITY':
             return {
                 ...state, 
