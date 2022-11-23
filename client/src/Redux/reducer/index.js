@@ -13,6 +13,34 @@ function rootReducer(state = initialState, action){
                 allCountries: action.payload
             };
 
+        case 'GET_ACTIVITY':
+            return {
+                ...state, 
+                activities: action.payload
+            };
+
+        case 'POST_ACTIVITY':
+            return {
+                ...state,
+                activities: [...state.activities, action.payload]
+            };
+        
+        case 'FILTER_ACTIVITY':
+            const actFiltered = state.countries.filter((count) => {return count.activities.length > 0})
+            const activities = [];
+            const filterActivities = action.payload ==='All' ? state.countries : activities;
+            for(let i=0; i<actFiltered.length; i++){
+                for(let j=0; j<actFiltered[i].activities.length; j++){
+                    if(actFiltered[i].activities[j].name===action.payload){
+                        activities.push(actFiltered[i])
+                    }
+                }
+            }
+            return{
+                ...state, 
+                countries: filterActivities
+            };
+
         case 'FILTER_BY_CONTINENT':
             const allCountries = state.allCountries
             const statusFiltered = action.payload === 'All'?

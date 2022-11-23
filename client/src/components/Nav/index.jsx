@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { getAllCountries } from '../../Redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllCountries, getActivity } from '../../Redux/actions'
 import './navbar.css'
 
 
-export default function NavBar({byName, byContinent, byPopulation}) {
+export default function NavBar({byName, byContinent, byPopulation, byActivities}) {
     const dispatch = useDispatch()
 
     function handleClick(e) {
@@ -14,7 +14,13 @@ export default function NavBar({byName, byContinent, byPopulation}) {
 
     useEffect(() => {
         dispatch(getAllCountries())
-      }, [dispatch])
+    }, [dispatch])
+
+    const allActivities = useSelector((state) => state.activities);
+
+    useEffect(() => {
+        dispatch(getActivity())
+    }, [dispatch]);
 
     return (
         <div className='cntnav'>
@@ -39,6 +45,10 @@ export default function NavBar({byName, byContinent, byPopulation}) {
                   <option value="population asc" key='population asc'>population asc</option>
                   <option value="population desc" key='population desc' >population desc</option>
                 </select>
+                <select  className='select' onChange={(e)=> byActivities(e)}>
+                  <option value='All'>Select Activity</option>
+                  {allActivities?.map((e)=>{return <option key={e.id} value={e.name}>{e.name}</option>})}
+              </select>
         </div>
     </div>
   )
