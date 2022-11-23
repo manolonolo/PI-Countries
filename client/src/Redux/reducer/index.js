@@ -13,6 +13,18 @@ function rootReducer(state = initialState, action){
                 allCountries: action.payload
             };
 
+        case 'GET_COUNTRY_NAME':
+            const country = [];
+            if(!action.payload.name){
+                return "This Country doesn't exist"
+            } else {
+                country.push(action.payload)
+            }
+            return { 
+                ...state, 
+                countries: country
+            };
+
         case 'GET_ACTIVITY':
             return {
                 ...state, 

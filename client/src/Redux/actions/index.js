@@ -6,6 +6,12 @@ export const getAllCountries= () => async(dispatch) => {
     .catch((error) => console.log(error));
 };
 
+export const getCountryByName = (name) => (dispatch) => {
+    return axios.get(`http://localhost:3001/countries?name=${name}`)
+    .then((info) => {return dispatch({ type: 'GET_COUNTRY_NAME', payload: info.data })})
+    .catch((error) => console.log(error))
+};
+
 export const getActivity= () => (dispatch) => {
     return axios.get(`http://localhost:3001/activity/all`)
     .then((info) => dispatch({type: 'GET_ACTIVITY', payload: info.data}))
