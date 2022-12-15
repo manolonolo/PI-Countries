@@ -25,12 +25,11 @@
 }
 
 .container{
-    width: 100px;
-    height: 100px;
     float: left;
     padding-top: 50px;
     padding-left: 150px;
-    padding-right: 100px;
-    padding-bottom: 300px;
+    padding-right: 150px;
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

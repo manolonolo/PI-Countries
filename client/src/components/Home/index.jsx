@@ -88,20 +88,22 @@ export default function Home() {
                     paginado= {paginado}
                 />
             </div>
-            {currentCountries?.map((c)=>{
-                return(
-                    <div className='container'>
-                        <CountryCard
-                            image={c.image}
-                            name={c.name}
-                            continent={c.continent}
-                            fifa={c.fifa}
-                            key={c.id}
-                            id={c.id}
-                        />                  
-                    </div>          
-            );
-          })}
+            <div className='container'>
+                {currentCountries?.map((c)=>{
+                    return(
+                        <div className='container'>
+                            <CountryCard
+                                image={c.image}
+                                name={c.name}
+                                continent={c.continent}
+                                fifa={c.fifa}
+                                key={c.id}
+                                id={c.id}
+                            />                  
+                        </div>          
+                    );
+                })}
+            </div>
         </div>
     )
 }
