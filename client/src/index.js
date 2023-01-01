@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
+
+//axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://pi-countries-back-production-a23e.up.railway.app/';
 
 ReactDOM.render(
   <Provider store = {store} >
